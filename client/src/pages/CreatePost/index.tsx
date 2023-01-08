@@ -1,9 +1,14 @@
 import React from "react";
 
-// import { Container } from './styles';
+//css
+import { Container } from "./styles";
 
 const CreatePost: React.FC = () => {
-  return <h1>CreatePost</h1>;
+  return (
+    <Container>
+      <h1>Criar Post</h1>
+    </Container>
+  );
 };
 
 export default CreatePost;

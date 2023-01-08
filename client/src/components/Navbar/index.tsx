@@ -1,18 +1,13 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 
 import { Container, Home, Nav, RightNav } from "./styles";
 
 const Navbar: React.FC = () => {
   return (
     <Container>
-      <NavLink to="/">
-        <Home>SkyBlog</Home>
-      </NavLink>
+      <Home to="/">SkyBlog</Home>
       <RightNav>
-        <NavLink to="/createpost">
-          <Nav>Criar Postagem</Nav>
-        </NavLink>
+        <Nav to="/createpost">Criar Postagem</Nav>
       </RightNav>
     </Container>
   );
