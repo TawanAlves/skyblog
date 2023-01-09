@@ -21,7 +21,7 @@ const posts = [
 const postController = {
 
    index: (req, res) => {
-      return res.render("posts", { title: "Lista de usuários",  posts });
+      return res.json(posts);
     },
 
    show: (req, res) => {
@@ -44,10 +44,49 @@ const postController = {
       //   ),
        };
       console.log(post)
-      return res.render("post", {  
-        post,
-      });
+      return res.json(post);
     },
+
+
+  store: (req, res) => {
+    const { nome, email, titulo, mensagem , avatar } = req.body;
+     const newPost = {
+        id: posts.length + 1,
+        nome,
+        email,
+        titulo,
+        mensagem ,
+        avatar,
+      };
+     posts.push(newPost);
+  
+     return res.json(posts);
+  },
+
+  update: (req, res) => {
+   const {id} = req.params
+   const { nome, email, titulo, mensagem , avatar } = req.body;
+   const postResult = posts.find((post) => post.id === parseInt(id));
+   
+
+   const updatePost = postResult;
+    if (nome) updatePost.nome = nome;
+    if (email) updatePost.email = email;
+    if (titulo) updatePost.titulo = titulo;
+    if (mensagem) updatePost.mensagem = mensagem;
+    if (avatar) updatePost.avatar = avatar;
+
+   // posts[id] = (nome, email, titulo, mensagem , avatar)
+
+   return res.json(posts)
+
+},
+
+delete: (req, res) => {
+   const {id} = req.params
+      posts.splice(id, 1)
+      return res.json({message: "O curso foi deletado"})
+},
 
 }
 

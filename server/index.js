@@ -15,12 +15,12 @@ const postRoute = require("./src/Routes/postRoute")
 server.use("/post", postRoute);
 
 // Página não encontrada - 404 not found
-server.get("*", (req, res, next) => {
-   res.status(404).render("error", {
-     title: "Ops!",
-     message: "Página não encontrada 2",
-   });
- });
+// server.get("*", (req, res, next) => {
+//    res.status(404).render("error", {
+//      title: "Ops!",
+//      message: "Página não encontrada 2",
+//    });
+//  });
 
 
 // const posts = [
