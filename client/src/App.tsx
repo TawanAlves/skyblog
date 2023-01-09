@@ -1,13 +1,13 @@
-import React from "react";
-
 //css
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import CreatePost from "./pages/CreatePost";
 
 //pages
 import Home from "./pages/Home";
+import CreatePost from "./pages/CreatePost";
+import EditPost from "./pages/EditPost";
 import PostDetails from "./pages/PostDetails";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,9 +16,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/createpost" element={<CreatePost />} />
-          <Route path="/postdetails" element={<PostDetails />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/post-details/:key" element={<PostDetails />} />
+          <Route path="/edit-post/:key" element={<EditPost />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

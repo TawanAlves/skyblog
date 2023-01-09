@@ -48,7 +48,7 @@ const Post: React.FC = () => {
                 vitae id pariatur ipsum.
               </Description>
 
-              <GotoPost to="/postdetails">
+              <GotoPost to={`/post-details/${"post1"}`}>
                 Visualizar Postagem <FiArrowRight />
               </GotoPost>
             </RightContent>
@@ -77,9 +77,7 @@ const Post: React.FC = () => {
                 vitae id pariatur ipsum.
               </Description>
 
-              <GotoPost to="/postdetails">
-                Visualizar Postagem <FiArrowRight />
-              </GotoPost>
+              <GotoPost to={`/post-details/${"post2"}`}></GotoPost>
             </RightContent>
           </Content>
         </PostContainer>

@@ -7,7 +7,7 @@ const Navbar: React.FC = () => {
     <Container>
       <Home to="/">SkyBlog</Home>
       <RightNav>
-        <Nav to="/createpost">Criar Postagem</Nav>
+        <Nav to="/create-post">Criar Postagem</Nav>
       </RightNav>
     </Container>
   );

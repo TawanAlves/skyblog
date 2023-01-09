@@ -6,6 +6,7 @@ import {
   Container,
   EmailInput,
   Form,
+  Image,
   ImageInput,
   MessageInput,
   NameInput,
@@ -13,15 +14,17 @@ import {
   TitleInput,
 } from "./styles";
 
-const CreatePost: React.FC = () => {
-  const [title, setTitle] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+//assets
+import Foto from "../../assets/img/airplane.jpg";
 
+const EditPost: React.FC = () => {
+  const [title, setTitle] = useState("Aiplane");
+  const [name, setName] = useState("Tawan");
+  const [email, setEmail] = useState("teste@gmail.com");
+  const [message, setMessage] = useState("Olha que foto Legal");
   return (
     <Container>
-      <h1>Criar Post</h1>
+      <h1>Editar Postagem</h1>
       <Form>
         <TitleInput>
           Nome:
@@ -57,7 +60,9 @@ const CreatePost: React.FC = () => {
         </TitleInput>
 
         <ImageInput>
+          {/* //! Não editar imagem */}
           Imagem:
+          <Image src={Foto} alt={"foto"} />
           <input type="file" name="arquivos" />
         </ImageInput>
         <Button />
@@ -66,4 +71,4 @@ const CreatePost: React.FC = () => {
   );
 };
 
-export default CreatePost;
+export default EditPost;

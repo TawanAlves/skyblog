@@ -6,17 +6,23 @@ import {
   AuthorName,
   Container,
   Content,
+  DateContainer,
+  Day,
   Description,
+  EditContainer,
+  EditPost,
   Image,
   LeftContent,
+  Month,
+  Pencil,
   RightContent,
   Title,
+  Trash,
 } from "./styles";
 
 //assets
 import Foto from "../../assets/img/airplane.jpg";
 import { FiTrash2 } from "react-icons/fi";
-import { BsPencilFill } from "react-icons/bs";
 
 const PostDetails: React.FC = () => {
   return (
@@ -27,6 +33,10 @@ const PostDetails: React.FC = () => {
           <Image src={Foto} alt={"photo"} />
         </LeftContent>
         <RightContent>
+          <DateContainer>
+            <Day>27</Day>
+            <Month>JUL</Month>
+          </DateContainer>
           <Title>Titulo da Postagem</Title>
           <AuthorEmail>Jubileu</AuthorEmail>
           <AuthorName>authorname@gmail.com</AuthorName>
@@ -36,8 +46,12 @@ const PostDetails: React.FC = () => {
             eaque doloremque aperiam perspiciatis autem eveniet sequi vitae id
             pariatur ipsum.
           </Description>
-          <BsPencilFill style={{ fontSize: "20px" }} />
-          <FiTrash2 style={{ fontSize: "20px" }} />
+          <EditContainer>
+            <EditPost to={`/edit-post/${"post1"}`}>
+              <Pencil />
+            </EditPost>
+            <Trash />
+          </EditContainer>
         </RightContent>
       </Content>
     </Container>

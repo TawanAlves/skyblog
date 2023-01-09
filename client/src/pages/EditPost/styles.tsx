@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -47,12 +52,17 @@ export const MessageInput = styled.textarea`
   height: 80px;
 `;
 
-export const ImageInput = styled.label`
+export const ImageInput = styled.div`
   margin-top: 15px;
   font-size: 20px;
   font-weight: 600;
   display: flex;
   flex-direction: column;
+`;
+
+export const Image = styled.img`
+  margin: 15px 0;
+  max-height: 400px;
 `;
 
 export const Button = styled.input.attrs({ type: "submit" })`
