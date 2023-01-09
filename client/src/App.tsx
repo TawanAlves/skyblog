@@ -7,6 +7,7 @@ import CreatePost from "./pages/CreatePost";
 
 //pages
 import Home from "./pages/Home";
+import PostDetails from "./pages/PostDetails";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/postdetails" element={<PostDetails />} />
         </Routes>
       </BrowserRouter>
     </div>

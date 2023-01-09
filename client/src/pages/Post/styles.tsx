@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div``;
 export const PostContainer = styled.div`
@@ -32,10 +33,8 @@ export const Day = styled.h2`
 
 export const CenterContent = styled.div``;
 
-export const ImgDiv = styled.div`
-  border: 1px solid black;
-  width: 300px;
-  height: 400px;
+export const Image = styled.img`
+  max-height: 400px;
 `;
 
 export const RightContent = styled.div`
@@ -57,6 +56,15 @@ export const AuthorEmail = styled.p`
 
 export const Description = styled.p`
   color: #4a4949;
+`;
+
+export const GotoPost = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
 `;
 
 export const Line = styled.div`

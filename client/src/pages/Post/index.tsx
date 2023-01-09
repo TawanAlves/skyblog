@@ -9,7 +9,8 @@ import {
   Content,
   Day,
   Description,
-  ImgDiv,
+  GotoPost,
+  Image,
   LeftContent,
   Line,
   Month,
@@ -19,6 +20,8 @@ import {
 } from "./styles";
 
 //assets
+import Foto from "../../assets/img/airplane.jpg";
+import { FiArrowRight } from "react-icons/fi";
 
 const Post: React.FC = () => {
   return (
@@ -32,21 +35,22 @@ const Post: React.FC = () => {
               <Day>27</Day>
             </LeftContent>
             <CenterContent>
-              <ImgDiv>
-                <img src="assets/img/airplane.jpg" alt="aiplane" />
-              </ImgDiv>
+              <Image src={Foto} alt="aiplane" />
             </CenterContent>
             <RightContent>
               <Title>Titulo da Postagem</Title>
               <AuthorEmail>Jubileu</AuthorEmail>
               <AuthorName>authorname@gmail.com</AuthorName>
-
               <Description>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
                 qui ipsam voluptas cupiditate sed, sint odio repellat facilis
                 nulla eaque doloremque aperiam perspiciatis autem eveniet sequi
                 vitae id pariatur ipsum.
               </Description>
+
+              <GotoPost to="/postdetails">
+                Visualizar Postagem <FiArrowRight />
+              </GotoPost>
             </RightContent>
           </Content>
         </PostContainer>
@@ -59,9 +63,7 @@ const Post: React.FC = () => {
               <Day>27</Day>
             </LeftContent>
             <CenterContent>
-              <ImgDiv>
-                <img src="assets/img/airplane.jpg" alt="aiplane" />
-              </ImgDiv>
+              <Image src={Foto} alt="aiplane" />
             </CenterContent>
             <RightContent>
               <Title>Titulo da Postagem</Title>
@@ -74,6 +76,10 @@ const Post: React.FC = () => {
                 nulla eaque doloremque aperiam perspiciatis autem eveniet sequi
                 vitae id pariatur ipsum.
               </Description>
+
+              <GotoPost to="/postdetails">
+                Visualizar Postagem <FiArrowRight />
+              </GotoPost>
             </RightContent>
           </Content>
         </PostContainer>
