@@ -3,7 +3,6 @@ const router = express.Router();
 
 const postController = require("../controllers/PostController")
 
-const userValidator = require("../validators/UserValidator");
 
 // GET localhost:3000/post/
 router.get("/", postController.index);
