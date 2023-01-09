@@ -21,7 +21,7 @@ const posts = [
 const postController = {
 
    index: (req, res) => {
-      return res.render("posts", {  posts });
+      return res.render("posts", { title: "Lista de usuários",  posts });
     },
 
    show: (req, res) => {

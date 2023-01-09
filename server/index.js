@@ -1,10 +1,11 @@
 const express = require("express");
 const server = express();
 const port = 4000
+// Todo: Mudar porta
 
 // Converter corpo da requisição (body) em objeto literal
 server.use(express.json())
-// Todo: Mudar porta
+
 
 // Importa pacote method-override
 // Serve para alterar método da requisição
@@ -35,9 +36,7 @@ server.use((req, res, next) => {
 });
 
 
-
-
-// localhost:3000/user/
+// localhost:3000/post/
 server.use("/post", postRoute);
 
 // Página não encontrada - 404 not found
@@ -47,11 +46,6 @@ app.get("*", (req, res, next) => {
      message: "Página não encontrada 2",
    });
  });
-
-
-
-
-
 
 
 // const posts = [
