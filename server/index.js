@@ -1,12 +1,15 @@
 const express = require("express");
 const server = express();
-const port = 4000
+const port = 3000
 // Todo: Mudar porta
+
+const cors = require('cors');
+server.use(cors());
 
 // Serve para alterar método da requisição
 const methodOverride = require("method-override");
 
-const postRoute = require("./src/Routes/postRoute")
+const postRoute = require("./src/routes/postRoute")
 
 // Converter corpo da requisição (body) em objeto literal
 server.use(express.json())

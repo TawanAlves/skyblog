@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import api from "../../services/api";
 
 //css
 import {
@@ -24,8 +25,24 @@ import Foto from "../../assets/img/airplane.jpg";
 import { FiArrowRight } from "react-icons/fi";
 
 const Post: React.FC = () => {
+  const [blog, setBlog] = useState();
+
+  useEffect(() => {
+    api
+      .get("/post/1")
+      .then((response) => setBlog(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+    console.log(blog);
+  }, []);
+
   return (
     <>
+      <p> </p>
+
+      <Line />
+
       <h1>Postagem</h1>
       <Container>
         <PostContainer>
