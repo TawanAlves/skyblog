@@ -3,13 +3,24 @@ const server = express();
 const port = 4000
 // Todo: Mudar porta
 
-// Converter corpo da requisição (body) em objeto literal
-server.use(express.json())
-
-
+// Serve para alterar método da requisição
+const methodOverride = require("method-override");
 
 const postRoute = require("./src/Routes/postRoute")
 
+// Converter corpo da requisição (body) em objeto literal
+server.use(express.json())
+
+//Todo: ver se precisa usar esses
+// Configura o methodOverride no express
+server.use(methodOverride("_method"));
+// Converte requisição para formato que o json aceita
+server.use(express.urlencoded({ extended: false }));
+// Middleware global
+server.use((req, res, next) => {
+  console.log("Entrou no middleware global");
+  next();
+});
 
 // localhost:3000/post/
 server.use("/post", postRoute);
