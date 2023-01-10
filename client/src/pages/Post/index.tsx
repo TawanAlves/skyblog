@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import api from "../../services/api";
+// import api from "../../services/api";
+
+import blogService from "../../services/blogService";
 
 //css
 import {
@@ -25,22 +27,41 @@ import Foto from "../../assets/img/airplane.jpg";
 import { FiArrowRight } from "react-icons/fi";
 
 const Post: React.FC = () => {
-  const [blog, setBlog] = useState();
+  const [blogPost, setBlogPost] = useState([]);
+  // Todo: mudar tipo do state
+
+  const handleApi = async () => {
+    try {
+      const response = await blogService.getBlogPost();
+      const data = response.data;
+      setBlogPost(data);
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(blogPost);
+  };
 
   useEffect(() => {
-    api
-      .get("/post/1")
-      .then((response) => setBlog(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-    console.log(blog);
-  }, []);
+    handleApi;
+    //   api;
+    //   // .get("/post/1")
+
+    //   // .then((response) => setBlog(response.data))
+    //   // .catch((err) => {
+    //   //   console.error("ops! ocorreu um erro" + err);
+    //   // });
+  }, [blogPost]);
 
   return (
     <>
-      <p> </p>
-
+      <div>
+        {blogPost.map((item, idx) => (
+          <div key={idx}>
+            <span>{item.nome}</span>
+          </div>
+        ))}
+      </div>
+      <button onClick={handleApi}>testar</button>
       <Line />
 
       <h1>Postagem</h1>
@@ -55,9 +76,9 @@ const Post: React.FC = () => {
               <Image src={Foto} alt="aiplane" />
             </CenterContent>
             <RightContent>
-              <Title>Titulo da Postagem</Title>
-              <AuthorEmail>Jubileu</AuthorEmail>
-              <AuthorName>authorname@gmail.com</AuthorName>
+              <Title> </Title>
+              <AuthorEmail> </AuthorEmail>
+              <AuthorName> </AuthorName>
               <Description>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
                 qui ipsam voluptas cupiditate sed, sint odio repellat facilis
