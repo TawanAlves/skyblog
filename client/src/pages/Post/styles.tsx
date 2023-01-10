@@ -34,6 +34,7 @@ export const Day = styled.h2`
 export const CenterContent = styled.div``;
 
 export const Image = styled.img`
+  height: 400px;
   max-height: 400px;
 `;
 

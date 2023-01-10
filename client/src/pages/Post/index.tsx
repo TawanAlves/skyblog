@@ -27,6 +27,7 @@ import Foto from "../../assets/img/airplane.jpg";
 import { FiArrowRight } from "react-icons/fi";
 
 const Post: React.FC = () => {
+  const [variavel, setvariavel] = useState(0);
   const [blogPost, setBlogPost] = useState([]);
   // Todo: mudar tipo do state
 
@@ -35,66 +36,48 @@ const Post: React.FC = () => {
       const response = await blogService.getBlogPost();
       const data = response.data;
       setBlogPost(data);
+      setvariavel(1);
     } catch (error) {
       console.log(error);
     }
     console.log(blogPost);
-  };
-
-  useEffect(() => {
     handleApi;
-    //   api;
-    //   // .get("/post/1")
-
-    //   // .then((response) => setBlog(response.data))
-    //   // .catch((err) => {
-    //   //   console.error("ops! ocorreu um erro" + err);
-    //   // });
-  }, [blogPost]);
+  };
 
   return (
     <>
-      <div>
-        {blogPost.map((item, idx) => (
-          <div key={idx}>
-            <span>{item.nome}</span>
-          </div>
-        ))}
-      </div>
       <button onClick={handleApi}>testar</button>
-      <Line />
 
       <h1>Postagem</h1>
+
       <Container>
-        <PostContainer>
-          <Content>
-            <LeftContent>
-              <Month>JUL</Month>
-              <Day>27</Day>
-            </LeftContent>
-            <CenterContent>
-              <Image src={Foto} alt="aiplane" />
-            </CenterContent>
-            <RightContent>
-              <Title> </Title>
-              <AuthorEmail> </AuthorEmail>
-              <AuthorName> </AuthorName>
-              <Description>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis
-                qui ipsam voluptas cupiditate sed, sint odio repellat facilis
-                nulla eaque doloremque aperiam perspiciatis autem eveniet sequi
-                vitae id pariatur ipsum.
-              </Description>
+        {blogPost.map((postagem) => (
+          <>
+            <PostContainer>
+              <Content key={postagem.id}>
+                <LeftContent>
+                  <Month>{postagem.mes}</Month>
+                  <Day>{postagem.dia}</Day>
+                </LeftContent>
+                <CenterContent>
+                  <Image src={postagem.avatar} alt={postagem.avatar} />
+                </CenterContent>
+                <RightContent>
+                  <Title>{postagem.titulo} </Title>
+                  <AuthorEmail>{postagem.email}</AuthorEmail>
+                  <AuthorName> {postagem.nome}</AuthorName>
+                  <Description>{postagem.mensagem}</Description>
+                  <GotoPost to={`/post-details/${postagem.id}`}>
+                    Visualizar Postagem <FiArrowRight />
+                  </GotoPost>
+                </RightContent>
+              </Content>
+            </PostContainer>
+            <Line />
+          </>
+        ))}
 
-              <GotoPost to={`/post-details/${"post1"}`}>
-                Visualizar Postagem <FiArrowRight />
-              </GotoPost>
-            </RightContent>
-          </Content>
-        </PostContainer>
-        <Line />
-
-        <PostContainer>
+        {/* <PostContainer>
           <Content>
             <LeftContent>
               <Month>JUL</Month>
@@ -118,8 +101,8 @@ const Post: React.FC = () => {
               <GotoPost to={`/post-details/${"post2"}`}></GotoPost>
             </RightContent>
           </Content>
-        </PostContainer>
-        <Line />
+        </PostContainer> 
+        {/* <Line /> */}
       </Container>
     </>
   );
