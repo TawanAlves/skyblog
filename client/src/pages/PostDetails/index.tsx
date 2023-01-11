@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import blogService from "../../services/blogService";
 
@@ -30,10 +31,12 @@ const PostDetails: React.FC = () => {
 
   // Todo: mudar tipo do state
 
+  let { postId } = useParams();
+
   useEffect(() => {
     const handleApi = async () => {
       try {
-        const response = await blogService.getPostId();
+        const response = await blogService.getPostId(`${postId}`);
         const data = response.data;
         setBlogPost(data);
       } catch (error) {

@@ -41,7 +41,6 @@ const Post: React.FC = () => {
       } catch (error) {
         console.log(error);
       }
-      console.log(blogPost);
     };
     handleApi();
   }, []);

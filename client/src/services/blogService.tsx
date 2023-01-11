@@ -6,8 +6,8 @@ const blogService = {
     return response;
   },
 
-  getPostId: async () => {
-    const response = await api.get(`/post/1`);
+  getPostId: async (postId) => {
+    const response = await api.get(`/post/${postId}`);
     return response;
   },
 

@@ -21,7 +21,7 @@ const posts = [
       email: "Jose123@email.com",
       titulo: "Titulo da postagem 2 ",
       mensagem: "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-      avatar: "jat.jpg",
+      avatar: "airplane.jpg",
     },
   ];
 

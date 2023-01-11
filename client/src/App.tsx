@@ -1,5 +1,5 @@
 //css
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 //pages
@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/post-details/:key" element={<PostDetails />} />
+          <Route path="/post-details/:postId" element={<PostDetails />} />
           <Route path="/edit-post/:key" element={<EditPost />} />
         </Routes>
         <Footer />
