@@ -24,30 +24,8 @@ const CreatePost: React.FC = () => {
   const [month, setMonth] = useState("Jun");
   const [newPost, setNewPost] = useState<any>();
 
-  const handleNewPost = (e) => {
+  const handleNewPost = async (e) => {
     e.preventDefault();
-    const novoPost = newPost;
-    const createBlogPost = async () => {
-      try {
-        const response = await blogService.createBlogPost(
-          novoPost
-          //   {
-          //   nome: "Maria A",
-          //   dia: 12,
-          //   mes: "AGO",
-          //   email: "maria@email.com",
-          //   titulo: "Titulo da postagem 3 ",
-          //   mensagem:
-          //     "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-          //   avatar: "airplane.jpg",
-          // }
-        );
-        console.log(response.data);
-        // setStudents(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
     const objectNewPost = {
       nome: name,
@@ -58,12 +36,86 @@ const CreatePost: React.FC = () => {
       mensagem: message,
       avatar: "airplane.jpg",
     };
-    setNewPost(objectNewPost);
-    // console.log(name, day, month, email, title, message);
-    console.log(newPost);
-
-    createBlogPost();
+    try {
+      const response = await blogService.createBlogPost(
+        objectNewPost
+        //   {
+        //   nome: "Maria A",
+        //   dia: 12,
+        //   mes: "AGO",
+        //   email: "maria@email.com",
+        //   titulo: "Titulo da postagem 3 ",
+        //   mensagem:
+        //     "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+        //   avatar: "airplane.jpg",
+        // }
+      );
+      console.log(response.data);
+      // setStudents(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  // const handleNewPost = (e) => {
+  //   e.preventDefault();
+  //   const novoPost = newPost;
+  //   const createBlogPost = async () => {
+  //     try {
+  //       const response = await blogService.createBlogPost(
+  //         novoPost
+  //         //   {
+  //         //   nome: "Maria A",
+  //         //   dia: 12,
+  //         //   mes: "AGO",
+  //         //   email: "maria@email.com",
+  //         //   titulo: "Titulo da postagem 3 ",
+  //         //   mensagem:
+  //         //     "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+  //         //   avatar: "airplane.jpg",
+  //         // }
+  //       );
+  //       console.log(response.data);
+  //       // setStudents(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   const objectNewPost = {
+  //     nome: name,
+  //     dia: day,
+  //     mes: month,
+  //     email: email,
+  //     titulo: title,
+  //     mensagem: message,
+  //     avatar: "airplane.jpg",
+  //   };
+
+  //   createBlogPost();
+  // };
+
+  // const createBlogPost = async () => {
+  //   try {
+  //     const response = await blogService.createBlogPost(
+  //       novoPost
+  //       //   {
+  //       //   nome: "Maria A",
+  //       //   dia: 12,
+  //       //   mes: "AGO",
+  //       //   email: "maria@email.com",
+  //       //   titulo: "Titulo da postagem 3 ",
+  //       //   mensagem:
+  //       //     "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+  //       //   avatar: "airplane.jpg",
+  //       // }
+  //     );
+  //     console.log(response.data);
+  //     // setStudents(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <Container>
