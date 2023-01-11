@@ -14,6 +14,7 @@ import {
   Description,
   GotoPost,
   Image,
+  Imagecontainer,
   LeftContent,
   Line,
   Month,
@@ -27,29 +28,27 @@ import Foto from "../../assets/img/airplane.jpg";
 import { FiArrowRight } from "react-icons/fi";
 
 const Post: React.FC = () => {
-  const [variavel, setvariavel] = useState(0);
-  const [blogPost, setBlogPost] = useState([]);
+  const [blogPost, setBlogPost] = useState<any>([]);
+
   // Todo: mudar tipo do state
 
-  const handleApi = async () => {
-    try {
-      const response = await blogService.getBlogPost();
-      const data = response.data;
-      setBlogPost(data);
-      setvariavel(1);
-    } catch (error) {
-      console.log(error);
-    }
-    console.log(blogPost);
-    handleApi;
-  };
+  useEffect(() => {
+    const handleApi = async () => {
+      try {
+        const response = await blogService.getBlogPost();
+        const data = response.data;
+        setBlogPost(data);
+      } catch (error) {
+        console.log(error);
+      }
+      console.log(blogPost);
+    };
+    handleApi();
+  }, []);
 
   return (
     <>
-      <button onClick={handleApi}>testar</button>
-
       <h1>Postagem</h1>
-
       <Container>
         {blogPost.map((postagem) => (
           <>
@@ -60,7 +59,9 @@ const Post: React.FC = () => {
                   <Day>{postagem.dia}</Day>
                 </LeftContent>
                 <CenterContent>
-                  <Image src={postagem.avatar} alt={postagem.avatar} />
+                  <Imagecontainer>
+                    <Image src={postagem.avatar} alt={postagem.avatar} />
+                  </Imagecontainer>
                 </CenterContent>
                 <RightContent>
                   <Title>{postagem.titulo} </Title>

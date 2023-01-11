@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import blogService from "../../services/blogService";
 
 //css
 import {
@@ -22,13 +24,53 @@ import {
 
 //assets
 import Foto from "../../assets/img/airplane.jpg";
-import { FiTrash2 } from "react-icons/fi";
 
 const PostDetails: React.FC = () => {
+  const [blogPost, setBlogPost] = useState<any>([]);
+
+  // Todo: mudar tipo do state
+
+  useEffect(() => {
+    const handleApi = async () => {
+      try {
+        const response = await blogService.getPostId();
+        const data = response.data;
+        setBlogPost(data);
+      } catch (error) {
+        console.log(error);
+      }
+      console.log(blogPost);
+    };
+    handleApi();
+  }, []);
+
   return (
     <Container>
       <h1>Post Details</h1>
+
       <Content>
+        <LeftContent>
+          <Image src={blogPost.avatar} alt={blogPost.avatar} />
+        </LeftContent>
+        <RightContent>
+          <DateContainer>
+            <Day>{blogPost.dia}</Day>
+            <Month>{blogPost.mes}</Month>
+          </DateContainer>
+          <Title>{blogPost.titulo} </Title>
+          <AuthorEmail>{blogPost.email}</AuthorEmail>
+          <AuthorName> {blogPost.nome}</AuthorName>
+          <Description>{blogPost.mensagem}</Description>
+          <EditContainer>
+            <EditPost to={`/edit-post/${"post1"}`}>
+              <Pencil />
+            </EditPost>
+            <Trash />
+          </EditContainer>
+        </RightContent>
+      </Content>
+
+      {/* <Content>
         <LeftContent>
           <Image src={Foto} alt={"photo"} />
         </LeftContent>
@@ -53,7 +95,7 @@ const PostDetails: React.FC = () => {
             <Trash />
           </EditContainer>
         </RightContent>
-      </Content>
+      </Content> */}
     </Container>
   );
 };

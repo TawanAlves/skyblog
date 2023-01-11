@@ -33,6 +33,11 @@ export const Day = styled.h2`
 
 export const CenterContent = styled.div``;
 
+export const Imagecontainer = styled.div`
+  height: 400px;
+  width: 200px;
+  max-width: 400px;
+`;
 export const Image = styled.img`
   height: 400px;
   max-height: 400px;
@@ -56,6 +61,7 @@ export const AuthorEmail = styled.p`
 `;
 
 export const Description = styled.p`
+  width: 500px;
   color: #4a4949;
 `;
 

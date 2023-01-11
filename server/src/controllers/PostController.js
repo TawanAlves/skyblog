@@ -10,8 +10,8 @@ const posts = [
      nome: "Roberto",
      email: "robertinho123@email.com",
      titulo: "Titulo da postagem",
-     mensagem: "Viajar é preciso",
-     avatar: "airplane.jpg",
+     mensagem: "Viajar é preciso.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+     avatar: "jat.jpg",
    },
    {
       id: 2,
@@ -20,7 +20,7 @@ const posts = [
       nome: "Jose",
       email: "Jose123@email.com",
       titulo: "Titulo da postagem 2 ",
-      mensagem: "Rapido é melhor",
+      mensagem: "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
       avatar: "jat.jpg",
     },
   ];
