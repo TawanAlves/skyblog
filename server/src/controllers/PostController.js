@@ -71,8 +71,9 @@ const postController = {
         avatar: filename,
       };
      posts.push(newPost);
-  
+     console.log(newPost);
      return res.json(posts);
+    
   },
 
   update: (req, res) => {

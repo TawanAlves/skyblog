@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import blogService from "../../services/blogService";
 
@@ -22,37 +22,54 @@ const CreatePost: React.FC = () => {
   const [message, setMessage] = useState("");
   const [day, setDay] = useState(12);
   const [month, setMonth] = useState("Jun");
+  const [newPost, setNewPost] = useState<any>();
 
-  // const handleNewPost = () => {
-  //   console.log(name, day, month, email, title, message);
-  // };
+  const handleNewPost = (e) => {
+    e.preventDefault();
+    const novoPost = newPost;
+    const createBlogPost = async () => {
+      try {
+        const response = await blogService.createBlogPost(
+          novoPost
+          //   {
+          //   nome: "Maria A",
+          //   dia: 12,
+          //   mes: "AGO",
+          //   email: "maria@email.com",
+          //   titulo: "Titulo da postagem 3 ",
+          //   mensagem:
+          //     "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+          //   avatar: "airplane.jpg",
+          // }
+        );
+        console.log(response.data);
+        // setStudents(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  const createBlogPost = async () => {
-    try {
-      const response = await blogService.createBlogPost({
-        nome: "Maria A",
-        dia: 12,
-        mes: "AGO",
-        email: "maria@email.com",
-        titulo: "Titulo da postagem 3 ",
-        mensagem:
-          "Viajar é preciso 3.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-        avatar: "airplane.jpg",
-      });
-      console.log(response.data);
-      // setStudents(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const objectNewPost = {
+      nome: name,
+      dia: day,
+      mes: month,
+      email: email,
+      titulo: title,
+      mensagem: message,
+      avatar: "airplane.jpg",
+    };
+    setNewPost(objectNewPost);
+    // console.log(name, day, month, email, title, message);
+    console.log(newPost);
+
+    createBlogPost();
   };
-
-  const addBlog = (data) => console.log(data);
 
   return (
     <Container>
-      <button onClick={createBlogPost}>criar</button>
+      {/* <button onClick={createBlogPost}>criar</button> */}
       <h1>Criar Post</h1>
-      <Form onSubmit={handleNewPost(addBlog)}>
+      <Form>
         <TitleInput>
           Nome:
           <NameInput
@@ -90,8 +107,8 @@ const CreatePost: React.FC = () => {
           Imagem:
           <input type="file" name="arquivos" />
         </ImageInput>
-        {/* <button onClick={handleNewPost}></button> */}
-        <Button />
+        <button onClick={handleNewPost}>SUBMETER ISSO</button>
+        {/* <Button /> */}
       </Form>
     </Container>
   );
