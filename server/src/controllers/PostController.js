@@ -32,7 +32,7 @@ const postController = {
     },
 
    show: (req, res) => {
-      // localhost:3000/user/4
+      // localhost:3000/post/4
       // id = 4
       const { id } = req.params;
       const postResult = posts.find((post) => post.id === parseInt(id));
@@ -55,11 +55,12 @@ const postController = {
 
 
   store: (req, res) => {
-    const { nome, dia, mes, email, titulo, mensagem , avatar } = req.body;
-    let filename = "post-default.jpeg";
+    const { nome, dia, mes, email, titulo, mensagem } = req.body;
+   let filename = "post-default.jpeg";
     if (req.file) {
+      console.log(filename)
       filename = req.file.filename;
-    }
+    } else{console.log("no-image");}
      const newPost = {
         id: posts.length + 1,
         dia,
