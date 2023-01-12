@@ -6,10 +6,7 @@ const upload = require("../helpers/multer");
 const userValidator = require("../validators/UserValidator");
 
 
-// GET localhost:3000/post/
-router.get("/", postController.index);
-// GET localhost:3000/post/4
- router.get("/:id", postController.show);
+
 // POST localhost:3000/post/create
 router.post("/newpost",upload.single("avatar"),
 userValidator.storeValidator, postController.store );
@@ -18,7 +15,10 @@ router.put("/update/:id",upload.single("avatar"), postController.update);
 // DELETE localhost:3000/post/delete/1
 router.delete("/delete/:id", postController.delete);
 
-
+// GET localhost:3000/post/
+router.get("/", postController.index);
+// GET localhost:3000/post/4
+ router.get("/:id", postController.show);
 
 //* mudanças em PUT e POST
 module.exports = router;

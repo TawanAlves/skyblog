@@ -1,14 +1,32 @@
 import React from "react";
 
-import { Container, Home, Nav, RightNav } from "./styles";
+//css
+import {
+  Container,
+  Home,
+  Nav,
+  NavContainer,
+  PagTitle,
+  RightNav,
+  UpButton,
+} from "./styles";
+
+//assets
+import Airport from "../../assets/img/airport.jpeg";
 
 const Navbar: React.FC = () => {
   return (
     <Container>
-      <Home to="/">SkyBlog</Home>
-      <RightNav>
-        <Nav to="/create-post">Criar Postagem</Nav>
-      </RightNav>
+      <NavContainer>
+        <Home to="/">Home</Home>
+
+        <RightNav>
+          <Nav to="/create-post">Criar Postagem</Nav>
+        </RightNav>
+        <UpButton>Top</UpButton>
+      </NavContainer>
+
+      <PagTitle>SKY BLOG</PagTitle>
     </Container>
   );
 };

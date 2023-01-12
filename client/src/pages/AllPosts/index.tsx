@@ -27,7 +27,7 @@ import {
 import Foto from "../../assets/img/airplane.jpg";
 import { FiArrowRight } from "react-icons/fi";
 
-const Post: React.FC = () => {
+const AllPosts: React.FC = () => {
   const [blogPost, setBlogPost] = useState<any>([]);
 
   // Todo: mudar tipo do state
@@ -36,7 +36,7 @@ const Post: React.FC = () => {
     const handleApi = async () => {
       try {
         const response = await blogService.getBlogPost();
-        const data = response.data;
+        const data = response;
         setBlogPost(data);
       } catch (error) {
         console.log(error);
@@ -108,4 +108,4 @@ const Post: React.FC = () => {
   );
 };
 
-export default Post;
+export default AllPosts;

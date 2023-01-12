@@ -35,32 +35,36 @@ const postController = {
       // localhost:3000/post/4
       // id = 4
       const { id } = req.params;
-      const postResult = posts.find((post) => post.id === parseInt(id));
+     
+       const postResult = posts.find((post) => post.id === parseInt(id));
+        
+       if (!postResult) {
+         return res.render("error", {
+           title: "Ops!",
+           message: "Post não encontrado",
+         });
+       }
+       const post = {
+          ...postResult,
+          avatar: files.base64Encode(
+            upload.path + postResult.avatar
+          ),
+        };     
+        //! A parte comentada faz com que o get/:id n pegue nenhum array que venha por um post, apenas os declarados acima em posts
+      console.log(post);
+       return res.json(post)
       
-      if (!postResult) {
-        return res.render("error", {
-          title: "Ops!",
-          message: "Post não encontrado",
-        });
-      }
-      const post = {
-         ...postResult,
-         avatar: files.base64Encode(
-           upload.path + postResult.avatar
-         ),
-       };
-      console.log(post)
-      return res.json(post);
     },
 
 
   store: (req, res) => {
-    const { nome, dia, mes, email, titulo, mensagem } = req.body;
-   let filename = "post-default.jpeg";
-    if (req.file) {
-      console.log(filename)
-      filename = req.file.filename;
-    } else{console.log("no-image");}
+    const { nome, dia, mes, email, titulo, mensagem, avatar } = req.body;
+   let filename = "airplane.jpg";
+  //  //!nome padrão mudado apenas para teste em front
+     if (req.file) {
+       console.log(filename)
+       filename = req.file.filename;
+     } else{console.log("no-image");}
      const newPost = {
         id: posts.length + 1,
         dia,
@@ -69,7 +73,8 @@ const postController = {
         email,
         titulo,
         mensagem ,
-        avatar: filename,
+        // avatar,
+         avatar: filename,
       };
      posts.push(newPost);
      console.log(newPost);
@@ -107,15 +112,16 @@ const postController = {
       updatePost.avatar = filename;
     }
    // posts[id] = (nome, email, titulo, mensagem , avatar)
-
    return res.json( posts)
-
 },
 
 delete: (req, res) => {
    const {id} = req.params
-      posts.splice(id, 1)
-      return res.json({message: `A postagem ${id} foi deletada`})
+  //  const postResult = posts.find((post) => post.id === parseInt(id));
+
+   posts.splice(id, 1)
+   return res.json(posts)
+  //  {message: `A postagem ${id} foi deletada`}
 },
 
 }

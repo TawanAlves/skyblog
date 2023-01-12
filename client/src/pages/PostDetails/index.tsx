@@ -37,7 +37,7 @@ const PostDetails: React.FC = () => {
     const handleApi = async () => {
       try {
         const response = await blogService.getPostId(`${postId}`);
-        const data = response.data;
+        const data = response;
         setBlogPost(data);
       } catch (error) {
         console.log(error);
@@ -47,10 +47,18 @@ const PostDetails: React.FC = () => {
     handleApi();
   }, []);
 
+  const handleDelete = async () => {
+    try {
+      const response = await blogService.deletPost(`${postId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Container>
       <h1>Post Details</h1>
-
+      <p>{blogPost.id}</p>
       <Content>
         <LeftContent>
           <Image src={blogPost.avatar} alt={blogPost.avatar} />
@@ -68,7 +76,7 @@ const PostDetails: React.FC = () => {
             <EditPost to={`/edit-post/${"post1"}`}>
               <Pencil />
             </EditPost>
-            <Trash />
+            <Trash onClick={handleDelete} />
           </EditContainer>
         </RightContent>
       </Content>
