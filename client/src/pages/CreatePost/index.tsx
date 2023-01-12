@@ -24,11 +24,30 @@ const CreatePost: React.FC = () => {
   const [month, setMonth] = useState("Jun");
   const [image, setImage] = useState<File>();
 
+  // const date = new Date();
+  // const mes = date.getMonth().toString();
+  // // var dia = String(date.getDate()).padStart(2, "0");
+  // // const currentMonth = mes.getMonth();
+  // console.log(mes);
+
+  function dateByString() {
+    const date = new Date();
+    const j = date.toString();
+
+    const resultadoEspaco = j.split(" ", 3).reverse();
+    const k = resultadoEspaco[1];
+    console.log(k);
+  }
+  dateByString();
+
   const handleNewPost = async (e) => {
     e.preventDefault();
     // console.log(image);
     const imgData = new FormData();
     imgData.append("image", image);
+
+    // setDay(today);
+    // console.log("day:", day, currentMonth);
 
     const objectNewPost = {
       nome: name,

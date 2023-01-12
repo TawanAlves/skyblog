@@ -1,49 +1,40 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Airport from "../../assets/img/airport.jpeg";
+import Airport2 from "../../assets/img/airport2.jpeg";
+
+// import Airport from "../../assets/img/back12.jpg";
+// import Airport2 from "../../assets/img/back1.jpg";
 
 export const Container = styled.div`
+  margin-top: -75px;
   height: 400px;
   background-image: url(${Airport});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% auto;
+  @media (min-width: 1000px) {
+    background-image: url(${Airport2});
+  }
 `;
 
-export const NavContainer = styled.div`
+export const GlassContainer = styled.div`
+  padding-top: 117px;
+  background-color: transparent;
+  backdrop-filter: blur(3px);
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
 `;
 export const PagTitle = styled.h1`
-  text-align: center;
+  /* margin-top: 30px;
+  text-align: center; */
   text-decoration: none;
   font-weight: 400;
   /* font-style: italic; */
-  font-size: 150px;
-  color: #bdc7bb;
-  text-shadow: 5px 4px 9px black;
+  font-size: 110px;
+  color: #ffffff;
+  text-shadow: 5px 4px 9px #0000006c;
   font-family: "Courgette", cursive;
-`;
-
-export const Home = styled(Link)`
-  /* color: #00000087; */
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 30px;
-  color: #ffffff;
-  text-shadow: 3px 3px 3px #00000087;
-`;
-
-export const RightNav = styled.div``;
-
-export const Nav = styled(Link)`
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 30px;
-  font-weight: 600;
-  text-shadow: 3px 3px 3px #00000087;
 `;
 
 export const UpButton = styled.button`

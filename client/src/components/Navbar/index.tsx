@@ -1,32 +1,19 @@
 import React from "react";
+import NavLinks from "../NavLinks";
 
 //css
-import {
-  Container,
-  Home,
-  Nav,
-  NavContainer,
-  PagTitle,
-  RightNav,
-  UpButton,
-} from "./styles";
+import { Container, GlassContainer, PagTitle, UpButton } from "./styles";
 
 //assets
-import Airport from "../../assets/img/airport.jpeg";
 
 const Navbar: React.FC = () => {
   return (
     <Container>
-      <NavContainer>
-        <Home to="/">Home</Home>
-
-        <RightNav>
-          <Nav to="/create-post">Criar Postagem</Nav>
-        </RightNav>
-        <UpButton>Top</UpButton>
-      </NavContainer>
-
-      <PagTitle>SKY BLOG</PagTitle>
+      <NavLinks />
+      <GlassContainer>
+        <PagTitle>SKY BLOG</PagTitle>
+      </GlassContainer>
+      <UpButton>Top</UpButton>
     </Container>
   );
 };

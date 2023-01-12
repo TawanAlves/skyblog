@@ -23,6 +23,16 @@ const posts = [
       mensagem: "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
       avatar: "airplane.jpg",
     },
+    {
+      id: 3,
+      dia: 28,
+      mes: "FEV",
+      nome: "Helder",
+      email: "helder23@email.com",
+      titulo: "Titulo da postagem do Helder ",
+      mensagem: "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+      avatar: "airplane.jpg",
+    },
   ];
 
 const postController = {
