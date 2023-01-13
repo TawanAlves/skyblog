@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
       <GlassContainer>
         <PagTitle>SKY BLOG</PagTitle>
       </GlassContainer>
-      <UpButton>Top</UpButton>
+      {/* <UpButton>Top</UpButton> */}
     </Container>
   );
 };

@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/post-details/:postId" element={<PostDetails />} />
-          <Route path="/edit-post/:key" element={<EditPost />} />
+          <Route path="/edit-post/:postId" element={<EditPost />} />
         </Routes>
         <Footer />
       </BrowserRouter>

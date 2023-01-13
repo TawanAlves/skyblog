@@ -20,27 +20,26 @@ export const NavContent = styled.div`
 
 export const LimiterLine = styled.div`
   width: 100%;
-  border-bottom: 1px solid #ffffff;
-  padding-top: 19px;
+  border-bottom: 2px solid #ffffff;
+  padding-top: 22px;
 `;
 
-export const Home = styled(Link)`
-  /* color: #00000087; */
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 30px;
+export const HomeLink = styled(Link)`
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 23px;
   text-decoration: none;
-
+  text-shadow: 1px 1px 4px black;
   color: #ffffff;
-  text-shadow: 2px 2px 7px #00000087;
 `;
 
 export const RightNav = styled.div``;
 
 export const Nav = styled(Link)`
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 23px;
   text-decoration: none;
+  text-shadow: 1px 1px 4px black;
   color: #ffffff;
-  font-size: 30px;
-  font-weight: 600;
-  text-shadow: 2px 2px 7px #00000087;
 `;

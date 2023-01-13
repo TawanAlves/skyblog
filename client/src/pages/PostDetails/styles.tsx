@@ -10,6 +10,12 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const PagTitle = styled.h1`
+  margin: 80px 0 70px;
+  text-align: center;
+  color: #222420;
+`;
+
 export const Content = styled.div`
   display: flex;
   gap: 0 50px;
@@ -18,7 +24,9 @@ export const Content = styled.div`
 export const LeftContent = styled.div``;
 
 export const Image = styled.img`
-  max-height: 400px;
+  height: 450px;
+  max-height: 450px;
+  max-width: 400;
 `;
 
 export const RightContent = styled.div`
@@ -36,26 +44,38 @@ export const Month = styled.h4`
   align-self: flex-end;
 `;
 export const Day = styled.h2`
-  color: grey;
+  color: #5f5f5f;
   font-size: 40px;
   margin: 0;
 `;
 
 export const Title = styled.h2`
-  color: #2f2e2e;
+  color: #222420;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
 `;
 
 export const AuthorName = styled.p`
   margin: 0;
-  color: grey;
+  color: #6973669b;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
 `;
 export const AuthorEmail = styled.p`
   margin: 0;
-  color: grey;
+  color: #6973669b;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
 `;
 
 export const Description = styled.p`
-  color: #4a4949;
+  width: 500px;
+  color: #222420;
+  /* font-family: "Open Sans", sans-serif; */
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
 `;
 
 export const EditContainer = styled.div`
@@ -64,13 +84,15 @@ export const EditContainer = styled.div`
   gap: 0 10px;
 `;
 export const Pencil = styled(BsPencilFill)`
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
+  color: #222420;
 `;
 
 export const Trash = styled(FiTrash2)`
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
+  color: #222420;
 `;
 
 export const EditPost = styled(Link)`

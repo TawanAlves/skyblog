@@ -11,9 +11,63 @@ const blogService = {
     return response.data;
   },
 
+  //   updateUserDocument: async (data: {
+  //     documentFileFront: any;
+  //     documentFileBack: any;
+  //     documentFileSelf: any;
+  //     documentNumber: string;
+  //     countryIndex: number;
+  //   }) => {
+  //     let formData = new FormData();
+
+  //     if (data.documentFileFront) {
+  //       formData.append("upload", data.documentFileFront, "documentFileFront");
+  //     }
+  //     if (data.documentFileBack) {
+  //       formData.append("upload", data.documentFileBack, "documentFileBack");
+  //     }
+  //     if (data.documentFileSelf) {
+  //       formData.append("upload", data.documentFileSelf, "documentFileSelf");
+  //     }
+
+  //     formData.append("documentNumber", data.documentNumber);
+  //     formData.append("countryIndex", data.countryIndex.toString());
+
+  //     return await handleApi("/user/documents", "put", { formData: formData });
+  //   },
+
+  //   const response = await api[method](
+  //     path,
+  //     data.formData
+  //       ? formData
+  //       : {
+  //           ...data.data,
+  //           params: data.params,
+  //         },
+  //     _responseTypeOptions
+  //   );
+  //   return response.data;
+  // };
+  // export default api;
+
   createBlogPost: async (data) => {
-    const { nome, dia, mes, email, titulo, mensagem, avatar } = data;
+    const { nome, date, email, titulo, mensagem, avatar } = data;
     const response = await api.post("/post/newpost", {
+      date,
+      nome,
+      email,
+      titulo,
+      mensagem,
+      avatar,
+    });
+    return response.data;
+  },
+
+  // /post/update/3
+
+  updateBlogPost: async (postId) => {
+    const { nome, dia, mes, email, titulo, mensagem, avatar } = data;
+    const response = await api.put(`/post/update/${postId}`, {
       dia,
       mes,
       nome,

@@ -18,6 +18,7 @@ import {
   LeftContent,
   Line,
   Month,
+  PagTitle,
   PostContainer,
   RightContent,
   Title,
@@ -31,13 +32,23 @@ const AllPosts: React.FC = () => {
   const [blogPost, setBlogPost] = useState<any>([]);
 
   // Todo: mudar tipo do state
-
+  const getDay = (_date: any) => {
+    const date = new Date(_date);
+    const dia = String(date.getDate()).padStart(2, "0");
+    return dia;
+  };
+  const getMonth = (_date) => {
+    const date = new Date(_date);
+    const dateString = date.toString();
+    const resultadoEspaco = dateString.split(" ", 3).reverse();
+    const mes = resultadoEspaco[1];
+    return mes;
+  };
   useEffect(() => {
     const handleApi = async () => {
       try {
         const response = await blogService.getBlogPost();
-        const data = response;
-        setBlogPost(data);
+        setBlogPost(response);
       } catch (error) {
         console.log(error);
       }
@@ -47,19 +58,21 @@ const AllPosts: React.FC = () => {
 
   return (
     <>
-      <h1>Postagem</h1>
+      <PagTitle>Últimas Postagens</PagTitle>
+
       <Container>
-        {blogPost.map((postagem) => (
-          <>
+        {blogPost.map((postagem, idx) => (
+          <div key={idx}>
             <PostContainer>
               <Content key={postagem.id}>
                 <LeftContent>
-                  <Month>{postagem.mes}</Month>
-                  <Day>{postagem.dia}</Day>
+                  <Month>{getMonth(postagem.date)}</Month>
+                  <Day>{getDay(postagem.date)}</Day>
                 </LeftContent>
                 <CenterContent>
                   <Imagecontainer>
                     <Image src={postagem.avatar} alt={postagem.avatar} />
+                    {/* {postagem.avatar} */}
                   </Imagecontainer>
                 </CenterContent>
                 <RightContent>
@@ -74,7 +87,7 @@ const AllPosts: React.FC = () => {
               </Content>
             </PostContainer>
             <Line />
-          </>
+          </div>
         ))}
 
         {/* <PostContainer>

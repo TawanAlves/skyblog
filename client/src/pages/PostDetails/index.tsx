@@ -17,6 +17,7 @@ import {
   Image,
   LeftContent,
   Month,
+  PagTitle,
   Pencil,
   RightContent,
   Title,
@@ -42,7 +43,6 @@ const PostDetails: React.FC = () => {
       } catch (error) {
         console.log(error);
       }
-      console.log(blogPost);
     };
     handleApi();
   }, []);
@@ -57,8 +57,7 @@ const PostDetails: React.FC = () => {
 
   return (
     <Container>
-      <h1>Post Details</h1>
-      <p>{blogPost.id}</p>
+      <PagTitle>Detalhes do Post</PagTitle>
       <Content>
         <LeftContent>
           <Image src={blogPost.avatar} alt={blogPost.avatar} />
@@ -68,12 +67,12 @@ const PostDetails: React.FC = () => {
             <Day>{blogPost.dia}</Day>
             <Month>{blogPost.mes}</Month>
           </DateContainer>
-          <Title>{blogPost.titulo} </Title>
+          <Title>{blogPost.titulo}</Title>
           <AuthorEmail>{blogPost.email}</AuthorEmail>
           <AuthorName> {blogPost.nome}</AuthorName>
           <Description>{blogPost.mensagem}</Description>
           <EditContainer>
-            <EditPost to={`/edit-post/${"post1"}`}>
+            <EditPost to={`/edit-post/${`${postId}`}`}>
               <Pencil />
             </EditPost>
             <Trash onClick={handleDelete} />

@@ -7,7 +7,7 @@ import Airport2 from "../../assets/img/airport2.jpeg";
 
 export const Container = styled.div`
   margin-top: -75px;
-  height: 400px;
+  height: 350px;
   background-image: url(${Airport});
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -18,21 +18,24 @@ export const Container = styled.div`
 `;
 
 export const GlassContainer = styled.div`
-  padding-top: 117px;
+  /* padding-top: 117px; */
+  height: 100%;
   background-color: transparent;
   backdrop-filter: blur(3px);
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 `;
 export const PagTitle = styled.h1`
+  /* align-self: flex-end; */
+  /* margin-top: 10px; */
   /* margin-top: 30px;
   text-align: center; */
   text-decoration: none;
   font-weight: 400;
   /* font-style: italic; */
   font-size: 110px;
-  color: #ffffff;
+  color: #fffafa;
   text-shadow: 5px 4px 9px #0000006c;
   font-family: "Courgette", cursive;
 `;

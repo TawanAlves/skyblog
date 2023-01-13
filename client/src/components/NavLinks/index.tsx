@@ -1,7 +1,7 @@
 import React from "react";
 
 import {
-  Home,
+  HomeLink,
   LimiterLine,
   Nav,
   NavContainer,
@@ -14,7 +14,7 @@ const NavLinks: React.FC = () => {
     <>
       <NavContainer>
         <NavContent>
-          <Home to="/">Home</Home>
+          <HomeLink to="/">Home</HomeLink>
           <RightNav>
             <Nav to="/create-post">Criar Postagem</Nav>
           </RightNav>
