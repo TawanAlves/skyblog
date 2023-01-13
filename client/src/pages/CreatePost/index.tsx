@@ -17,10 +17,10 @@ import {
 } from "./styles";
 
 const CreatePost: React.FC = () => {
-  const [title, setTitle] = useState<String>("");
-  const [name, setName] = useState<String>("");
-  const [email, setEmail] = useState<String>("");
-  const [message, setMessage] = useState<String>("");
+  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [image, setImage] = useState<File>();
   const navigate = useNavigate();
 

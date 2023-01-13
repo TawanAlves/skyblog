@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import blogService from "../../services/blogService";
 
@@ -14,6 +14,7 @@ import {
   Description,
   EditContainer,
   EditPost,
+  HomeLink,
   Image,
   LeftContent,
   Month,
@@ -29,10 +30,10 @@ import Foto from "../../assets/img/airplane.jpg";
 
 const PostDetails: React.FC = () => {
   const [blogPost, setBlogPost] = useState<any>([]);
-
   // Todo: mudar tipo do state
 
   let { postId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleApi = async () => {
@@ -53,6 +54,7 @@ const PostDetails: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
+    navigate("/");
   };
 
   return (

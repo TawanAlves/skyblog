@@ -95,7 +95,7 @@ const postController = {
   update: (req, res) => {
     const { id } = req.params;
     const { nome, dia, mes, email, titulo, mensagem } = req.body;
-    const postResult = posts.find((post) => post.id === parseInt(id));
+    const postResult = posts.find((post) => post.id === id);
 
     let filename;
     if (req.file) {
@@ -110,8 +110,6 @@ const postController = {
 
     const updatePost = postResult;
     if (nome) updatePost.nome = nome;
-    if (dia) updatePost.dia = dia;
-    if (mes) updatePost.mes = mes;
     if (email) updatePost.email = email;
     if (titulo) updatePost.titulo = titulo;
     if (mensagem) updatePost.mensagem = mensagem;
@@ -127,6 +125,8 @@ const postController = {
 
   delete: (req, res) => {
     const { id } = req.params;
+    // const { id } = req.params;
+    // const postResult = posts.find((post) => post.id === id);
     //  const postResult = posts.find((post) => post.id === parseInt(id));
 
     posts.splice(id, 1);
