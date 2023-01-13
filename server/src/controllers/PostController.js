@@ -1,11 +1,11 @@
 const fs = require("fs");
 const files = require("../helpers/files");
 const upload = require("../config/upload");
-const { v4: uuidv4 } = require("uuid");
+const { v1: uuidv1 } = require("uuid");
 
 const posts = [
   {
-    id: 1,
+    id: "661728b0-92f5-11ed-ae5e-ef9f7d26733a",
     date: "2023-07-28T02:54:58.188Z",
     nome: "Roberto",
     email: "robertinho123@email.com",
@@ -15,7 +15,7 @@ const posts = [
     avatar: "jat.jpg",
   },
   {
-    id: 2,
+    id: "4cf57170-92f5-11ed-ae5e-ef9f7d26733a",
     date: "2023-05-18T02:54:58.188Z",
     nome: "Jose",
     email: "Jose123@email.com",
@@ -25,7 +25,7 @@ const posts = [
     avatar: "airplane.jpg",
   },
   {
-    id: 3,
+    id: "4cf36170-92f5-11ed-ae5e-ef9f7d26733a",
     date: "2023-11-15T02:54:58.188Z",
     nome: "Helder",
     email: "helder23@email.com",
@@ -78,9 +78,9 @@ const postController = {
     } else {
       console.log("no-image");
     }
-    const newPost = {
-      id: posts.length + 1,
 
+    const newPost = {
+      id: uuidv1(),
       nome,
       email,
       titulo,
