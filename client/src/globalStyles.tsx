@@ -1,6 +1,13 @@
 // globalStyles.js
 import { createGlobalStyle } from "styled-components";
 
+// font-family: 'Courgette', cursive;
+// font-family: 'Open Sans', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'Roboto Condensed', sans-serif;
+// font-family: 'Roboto Mono', monospace;
+// font-family: 'Rubik', sans-serif;
+
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;

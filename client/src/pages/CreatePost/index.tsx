@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import blogService from "../../services/blogService";
+import { useNavigate } from "react-router-dom";
 
 //css
 import {
@@ -12,31 +13,31 @@ import {
   PagTitle,
   TextInput,
   TitleInput,
+  Warning,
 } from "./styles";
 
 const CreatePost: React.FC = () => {
-  const [title, setTitle] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [day, setDay] = useState("");
-  const [month, setMonth] = useState("");
+  const [title, setTitle] = useState<String>("");
+  const [name, setName] = useState<String>("");
+  const [email, setEmail] = useState<String>("");
+  const [message, setMessage] = useState<String>("");
   const [image, setImage] = useState<File>();
+  const navigate = useNavigate();
 
-  const handleNewPost = async (e) => {
+  const handleNewPost = async (e: any) => {
     e.preventDefault();
     try {
       // console.log(image);
-      const imgData = new FormData();
-      imgData.append("image", image);
+      // const imgData = new FormData();
+      // imgData.append("image", image);
 
       const objectNewPost = {
-        nome: name,
         date: new Date(),
+        nome: name,
         email: email,
         titulo: title,
         mensagem: message,
-        avatar: imgData,
+        avatar: image,
       };
       const response = await blogService.createBlogPost(objectNewPost);
       // console.log(response.data);
@@ -44,6 +45,7 @@ const CreatePost: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
+    navigate("/");
   };
 
   return (
@@ -55,7 +57,7 @@ const CreatePost: React.FC = () => {
         <TextInput
           required
           onChange={(e) => setName(e.target.value)}
-          value={name}
+          // value={name}
           placeholder={"Nome:"}
         />
 
@@ -64,14 +66,14 @@ const CreatePost: React.FC = () => {
           required
           onChange={(e) => setEmail(e.target.value)}
           placeholder={"Email:"}
-          value={email}
+          // value={email}
         />
 
         {/* Titulo da Postagem: */}
         <TextInput
           required
           onChange={(e) => setTitle(e.target.value)}
-          value={title}
+          // value={title}
           placeholder={"Titulo da Postagem:"}
         />
 
@@ -79,7 +81,7 @@ const CreatePost: React.FC = () => {
         <MessageInput
           required
           onChange={(e) => setMessage(e.target.value)}
-          value={message}
+          // value={message}
           placeholder={"Escreva sua Mensagem:"}
         />
 
@@ -90,6 +92,7 @@ const CreatePost: React.FC = () => {
             onChange={(e) => setImage(e.target.files[0])}
           />
         </TitleInput>
+        <Warning>*Escolha uma imagem em formato vertical</Warning>
 
         <Button type="submit">Criar Postagem</Button>
       </Form>

@@ -45,8 +45,8 @@ export const Imagecontainer = styled.div`
 `;
 export const Image = styled.img`
   height: 400px;
-  max-height: 400px;
-  max-width: 400;
+  /* max-height: 400px; */
+  max-width: 400px;
 `;
 
 export const RightContent = styled.div`

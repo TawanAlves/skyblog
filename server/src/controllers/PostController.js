@@ -44,7 +44,6 @@ const postController = {
         avatar: files.base64Encode(upload.path + postToSend.avatar),
       };
     });
-
     return res.json(postsToSend);
   },
 
@@ -52,7 +51,7 @@ const postController = {
     // localhost:3000/post/4
     // id = 4
     const { id } = req.params;
-    const postResult = posts.find((post) => post.id);
+    const postResult = posts.find((post) => post.id === id);
     if (!postResult) {
       return res.render("error", {
         title: "Ops!",

@@ -6,82 +6,107 @@ const blogService = {
     return response.data;
   },
 
-  getPostId: async (postId) => {
+  getPostId: async (postId: string) => {
     const response = await api.get(`/post/${postId}`);
     return response.data;
   },
 
-  //   updateUserDocument: async (data: {
-  //     documentFileFront: any;
-  //     documentFileBack: any;
-  //     documentFileSelf: any;
-  //     documentNumber: string;
-  //     countryIndex: number;
-  //   }) => {
-  //     let formData = new FormData();
+  // updateUserDocument: async (data: {
+  //   date: string;
+  //   nome: string;
+  //   email: string;
+  //   titulo: string;
+  //   mensagem: string;
+  //   avatar: any;
+  // }) => {
+  //   let formData = new FormData();
 
-  //     if (data.documentFileFront) {
-  //       formData.append("upload", data.documentFileFront, "documentFileFront");
-  //     }
-  //     if (data.documentFileBack) {
-  //       formData.append("upload", data.documentFileBack, "documentFileBack");
-  //     }
-  //     if (data.documentFileSelf) {
-  //       formData.append("upload", data.documentFileSelf, "documentFileSelf");
-  //     }
+  //   formData.append("avatar", data.avatar, "documeavatarntFileFront");
+  //   formData.append("date", data.date);
+  //   formData.append("nome", data.nome);
+  //   formData.append("email", data.email);
+  //   formData.append("titulo", data.titulo);
+  //   formData.append("mensagem", data.mensagem);
+  //   return await { formData: formData };
+  // },
 
-  //     formData.append("documentNumber", data.documentNumber);
-  //     formData.append("countryIndex", data.countryIndex.toString());
+  // const newPostData = {
+  //   getBlogPost: async () => {
+  //     const formData = new FormData();
 
-  //     return await handleApi("/user/documents", "put", { formData: formData });
-  //   },
+  //     formData.append("avatar", data.avatar, "avatar");
+  //     formData.append("date", data.date);
+  //     formData.append("nome", data.nome);
+  //     formData.append("email", data.email);
+  //     formData.append("titulo", data.titulo);
+  //     formData.append("mensagem", data.mensagem);
 
-  //   const response = await api[method](
-  //     path,
-  //     data.formData
-  //       ? formData
-  //       : {
-  //           ...data.data,
-  //           params: data.params,
-  //         },
-  //     _responseTypeOptions
-  //   );
-  //   return response.data;
-  // };
-  // export default api;
+  //   }
 
-  createBlogPost: async (data) => {
+  // },
+  // updateUserDocument: async (data: {
+  //   date: string;
+  //   nome: string;
+  //   email: string;
+  //   titulo: string;
+  //   mensagem: string;
+  //   avatar: any;
+  // }) => {
+  //   var formData = new FormData();
+  //   formData.append("avatar", data.avatar, "avatar");
+  //   formData.append("date", data.date);
+  //   formData.append("nome", data.nome);
+  //   formData.append("email", data.email);
+  //   formData.append("titulo", data.titulo);
+  //   formData.append("mensagem", data.mensagem);
+  // },
+
+  createBlogPost: async (data: {
+    date: any;
+    nome: string;
+    email: string;
+    titulo: string;
+    mensagem: string;
+    avatar: any;
+  }) => {
     const { nome, date, email, titulo, mensagem, avatar } = data;
-    const response = await api.post("/post/newpost", {
-      date,
-      nome,
-      email,
-      titulo,
-      mensagem,
-      avatar,
+    var formData = new FormData();
+    formData.append("avatar", data.avatar, "avatar");
+    formData.append("date", data.date);
+    formData.append("nome", data.nome);
+    formData.append("email", data.email);
+    formData.append("titulo", data.titulo);
+    formData.append("mensagem", data.mensagem);
+    const response = await api.post("/post/newpost", formData, {
+      headers: {
+        "Content-Type": `multipart/form-data;`,
+      },
     });
-    return response.data;
+
+    // return response.data.formData;
   },
 
   // /post/update/3
 
-  updateBlogPost: async (postId) => {
-    const { nome, dia, mes, email, titulo, mensagem, avatar } = data;
-    const response = await api.put(`/post/update/${postId}`, {
-      dia,
-      mes,
-      nome,
-      email,
-      titulo,
-      mensagem,
-      avatar,
-    });
+  updateBlogPost: async (postId: string) => {
+    // const { nome, dia, mes, email, titulo, mensagem, avatar } = data;
+    // const response = await api.put(`/post/update/${postId}`, {
+    //   dia,
+    //   mes,
+    //   nome,
+    //   email,
+    //   titulo,
+    //   mensagem,
+    //   avatar,
+    // });
+
+    const response = await api.get(`/post/${postId}`);
     return response.data;
   },
 
-  deletPost: async (postId) => {
-    const newId = postId - 1;
-    const response = await api.delete(`/post/delete/${newId}`);
+  deletPost: async (postId: string) => {
+    // const newId = postId - 1;
+    const response = await api.delete(`/post/delete/${postId}`);
     console.log("excluido");
     // alert("Postagem deleteada");
     return response;

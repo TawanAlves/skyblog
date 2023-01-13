@@ -37,7 +37,7 @@ const AllPosts: React.FC = () => {
     const dia = String(date.getDate()).padStart(2, "0");
     return dia;
   };
-  const getMonth = (_date) => {
+  const getMonth = (_date: any) => {
     const date = new Date(_date);
     const dateString = date.toString();
     const resultadoEspaco = dateString.split(" ", 3).reverse();
@@ -61,7 +61,8 @@ const AllPosts: React.FC = () => {
       <PagTitle>Últimas Postagens</PagTitle>
 
       <Container>
-        {blogPost.map((postagem, idx) => (
+        {/* olhar tipagem idx */}
+        {blogPost.map((postagem: any, idx: number) => (
           <div key={idx}>
             <PostContainer>
               <Content key={postagem.id}>
@@ -72,7 +73,6 @@ const AllPosts: React.FC = () => {
                 <CenterContent>
                   <Imagecontainer>
                     <Image src={postagem.avatar} alt={postagem.avatar} />
-                    {/* {postagem.avatar} */}
                   </Imagecontainer>
                 </CenterContent>
                 <RightContent>

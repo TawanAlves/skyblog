@@ -84,6 +84,12 @@ export const TitleInput = styled.label`
   display: flex;
   //   flex-direction: column;
 `;
+export const Warning = styled.p`
+  color: #6973669b;
+  font-weight: 800;
+  font-size: 15px;
+  text-align: left;
+`;
 
 export const ImageInput = styled.input.attrs({ type: "file" })`
   width: 400px;
