@@ -14,7 +14,6 @@ import {
   Description,
   EditContainer,
   EditPost,
-  HomeLink,
   Image,
   LeftContent,
   Month,

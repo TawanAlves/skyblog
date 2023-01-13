@@ -36,8 +36,6 @@ const blogService = {
     // return response.data.formData;
   },
 
-  // /post/update/3
-
   updateBlogPost: async (
     postId: string,
     data: {
@@ -72,30 +70,13 @@ const blogService = {
         "Content-Type": `multipart/form-data;`,
       },
     });
-
-    // const response = await api.put(`/post/update/${postId}`, {
-    //   dia,
-    //   mes,
-    //   nome,
-    //   email,
-    //   titulo,
-    //   mensagem,
-    //   avatar,
-    // });
-
-    // const response = await api.get(`/post/${postId}`);
-    // return response.data;
   },
 
   deletPost: async (postId: string) => {
-    // const newId = postId - 1;
     const response = await api.delete(`/post/delete/${postId}`);
     console.log("excluido");
-    // alert("Postagem deleteada");
     return response;
   },
-
-  //Todo: erro de criação de postagem, deletando uma postagem a proxima vem com o número da posição do array, causando postagens com mesmo id, travando o delete de uma delas
 };
 
 export default blogService;

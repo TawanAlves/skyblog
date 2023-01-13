@@ -94,7 +94,6 @@ export const Trash = styled(FiTrash2)`
   cursor: pointer;
   color: #222420;
 `;
-export const HomeLink = styled(Link)``;
 
 export const EditPost = styled(Link)`
   text-decoration: none;

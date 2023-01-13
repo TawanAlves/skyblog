@@ -25,7 +25,7 @@ const posts = [
     avatar: "airplane.jpg",
   },
   {
-    id: "4cf36170-92f5-11ed-ae5e-ef9f7d26733a",
+    id: "a9d3a960-936e-11ed-9ec4-89c66bb13c4c",
     date: "2023-11-15T02:54:58.188Z",
     nome: "Helder",
     email: "helder23@email.com",
@@ -48,8 +48,6 @@ const postController = {
   },
 
   show: (req, res) => {
-    // localhost:3000/post/4
-    // id = 4
     const { id } = req.params;
     const postResult = posts.find((post) => post.id === id);
     if (!postResult) {
@@ -62,14 +60,13 @@ const postController = {
       ...postResult,
       avatar: files.base64Encode(upload.path + postResult.avatar),
     };
-    console.log(post);
+    // console.log(post);
     return res.json(post);
   },
 
   store: (req, res) => {
     const { nome, date, email, titulo, mensagem, avatar } = req.body;
-    let filename = "airplane.jpg";
-    //  //!nome padrão mudado apenas para teste em front
+    let filename = "airplane22.jpg";
     if (req.file) {
       console.log(filename);
       filename = req.file.filename;
@@ -84,11 +81,9 @@ const postController = {
       titulo,
       mensagem,
       date,
-      // avatar,
       avatar: filename,
     };
     posts.push(newPost);
-    console.log(newPost);
     return res.json(posts);
   },
 
@@ -113,81 +108,26 @@ const postController = {
     if (email) updatePost.email = email;
     if (titulo) updatePost.titulo = titulo;
     if (mensagem) updatePost.mensagem = mensagem;
-    // if (avatar) updatePost.avatar = avatar;
     if (filename) {
       let avatarTmp = updatePost.avatar;
       fs.unlinkSync(upload.path + avatarTmp);
       updatePost.avatar = filename;
     }
-    // posts[id] = (nome, email, titulo, mensagem , avatar)
     return res.json(posts);
   },
 
   delete: (req, res) => {
     const { id } = req.params;
-    // const { id } = req.params;
-    // const postResult = posts.find((post) => post.id === id);
-    //  const postResult = posts.find((post) => post.id === parseInt(id));
-
-    posts.splice(id, 1);
-    return res.json(posts);
-    //  {message: `A postagem ${id} foi deletada`}
+    delPost = posts.findIndex((o) => o.id == id);
+    posts.splice(delPost, 1);
+    return res.json({ message: "post deletado" });
   },
 };
 //*Destroy e create n adicionados
 
-// // retornar um curso
-// server.get('/posts/:index', (req, res)=>{
-//    const {index} = req.params
-
-//    return res.json(posts[index])
-// });
-
-// //retornar todos os posts
-// server.get('/posts', (req, res)=>{
-//    return res.json(posts)
-// });
-
-// //criar novo curso
-// server.post('/posts', (req, res) =>{
-//    const { nome, email, titulo, mensagem , avatar } = req.body;
-//    const newPost = {
-//       id: posts.length + 1,
-//       nome,
-//       email,
-//       titulo,
-//       mensagem ,
-//       avatar,
-//     };
-//    posts.push(newPost);
-
-//    return res.json(posts);
-// });
-
-// //atualizar Postagem
-// server.put('/posts/:index', (req, res)=>{
-//    const {index} = req.params
-//    const { nome, email, titulo, mensagem , avatar } = req.body;
-//    const postResult = users.find((post) => post.id === parseInt(id));
-
-//    const updatePost = postResult;
-//     if (nome) updatePost.nome = nome;
-//     if (email) updatePost.email = email;
-//     if (titulo) updatePost.titulo = titulo;
-//     if (mensagem) updatePost.mensagem = mensagem;
-//     if (avatar) updatePost.avatar = avatar;
-
-//    posts[index] = (nome, email, titulo, mensagem , avatar)
-
-//    return res.json(posts)
-// });
-
-// //deletar curso
 // server.delete('/posts/:index', (req, res) =>{
 //    const {index} = req.params
 //    posts.splice(index, 1)
 //    return res.json({message: "O curso foi deletado"})
-
-// });
 
 module.exports = postController;
