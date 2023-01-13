@@ -52,7 +52,7 @@ const postController = {
     // localhost:3000/post/4
     // id = 4
     const { id } = req.params;
-    const postResult = posts.find((post) => post.id === parseInt(id));
+    const postResult = posts.find((post) => post.id);
     if (!postResult) {
       return res.render("error", {
         title: "Ops!",
@@ -63,7 +63,6 @@ const postController = {
       ...postResult,
       avatar: files.base64Encode(upload.path + postResult.avatar),
     };
-    //! A parte comentada faz com que o get/:id n pegue nenhum array que venha por um post, apenas os declarados acima em posts
     console.log(post);
     return res.json(post);
   },
