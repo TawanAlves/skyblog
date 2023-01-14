@@ -3,21 +3,17 @@ import blogService from "../../services/blogService";
 import { useParams, useNavigate } from "react-router-dom";
 
 //css
-import {
-  Button,
-  Container,
-  EmailInput,
-  Form,
-  Image,
-  ImageInput,
-  MessageInput,
-  PagTitle,
-  TextInput,
-  TitleInput,
-} from "./styles";
+import { Container, Form, Image, ImageInput, TitleInput } from "./styles";
 
 //assets
 import Foto from "../../assets/img/airplane.jpg";
+import {
+  Button,
+  EmailInput,
+  MessageInput,
+  PagTitle,
+  TextInput,
+} from "../CreatePost/styles";
 
 const EditPost: React.FC = () => {
   const [blogPost, setBlogPost] = useState<any>([]);
@@ -48,10 +44,6 @@ const EditPost: React.FC = () => {
   const handleUpdatePost = async (e: any) => {
     e.preventDefault();
     try {
-      // console.log(image);
-      // const imgData = new FormData();
-      // imgData.append("image", image);
-
       const objectNewPost = {
         date: new Date(),
         nome: name,
@@ -99,7 +91,7 @@ const EditPost: React.FC = () => {
 
         {/* Escreva sua Mensagem */}
         <MessageInput
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e: any) => setMessage(e.target.value)}
           value={message}
           placeholder={blogPost.mensagem}
         />

@@ -22,7 +22,7 @@ const posts = [
     titulo: "Titulo da postagem 2 ",
     mensagem:
       "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-    avatar: "airplane.jpg",
+    avatar: "5.jpg",
   },
   {
     id: "a9d3a960-936e-11ed-9ec4-89c66bb13c4c",
@@ -32,7 +32,7 @@ const posts = [
     titulo: "Titulo da postagem do Helder ",
     mensagem:
       "Rapido é melhor. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-    avatar: "airplane.jpg",
+    avatar: "1.jpg",
   },
 ];
 

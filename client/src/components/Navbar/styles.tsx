@@ -7,11 +7,14 @@ import Airport2 from "../../assets/img/airport2.jpeg";
 
 export const Container = styled.div`
   margin-top: -75px;
-  height: 350px;
+  height: 201px;
   background-image: url(${Airport});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% auto;
+  @media (min-width: 576px) {
+    height: 350px;
+  }
   @media (min-width: 1000px) {
     background-image: url(${Airport2});
   }
@@ -25,19 +28,19 @@ export const GlassContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  @media (min-width: 1200px) {
+  }
 `;
 export const PagTitle = styled.h1`
-  /* align-self: flex-end; */
-  /* margin-top: 10px; */
-  /* margin-top: 30px;
-  text-align: center; */
   text-decoration: none;
   font-weight: 400;
-  /* font-style: italic; */
-  font-size: 110px;
+  font-size: 35px;
   color: #fffafa;
   text-shadow: 5px 4px 9px #0000006c;
   font-family: "Courgette", cursive;
+  @media (min-width: 576px) {
+    font-size: 110px;
+  }
 `;
 
 export const UpButton = styled.button`
