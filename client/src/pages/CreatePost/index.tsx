@@ -15,13 +15,16 @@ import {
   TitleInput,
   Warning,
 } from "./styles";
+import ProceedCard from "../../components/cards/modals/ProceedCard";
 
 const CreatePost: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [image, setImage] = useState<File>();
+
   const navigate = useNavigate();
 
   const handleNewPost = async (e: any) => {
@@ -45,11 +48,13 @@ const CreatePost: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
-    navigate("/");
+    // navigate("/");
+    setShowModal(true);
   };
 
   return (
     <Container>
+      <ProceedCard {...{ show: showModal, setShow: setShowModal }} />
       {/* <button onClick={createBlogPost}>criar</button> */}
       <PagTitle>Compartilhe sua história</PagTitle>
       <Form encType="multipart/form-data" onSubmit={handleNewPost}>

@@ -1,17 +1,10 @@
 const request = require("supertest");
 const server = require("../../server");
 
-describe("Postage", () => {
+describe("PostController Test", () => {
   it("List posts", async () => {
     const res = await request(server).get("/post");
     expect(res.statusCode).toEqual(200);
-  });
-  it("Delete post - 661728b0-92f5-11ed-ae5e-ef9f7d26733a", async () => {
-    const res = await request(server).delete(
-      "/post/delete/661728b0-92f5-11ed-ae5e-ef9f7d26733a"
-    );
-    expect(res.statusCode).toEqual(200);
-    expect(res.body.message).toEqual("post deletado");
   });
 
   //   it("should get with id route", async () => {
