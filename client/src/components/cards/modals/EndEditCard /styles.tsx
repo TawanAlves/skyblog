@@ -5,7 +5,6 @@ export const Container = styled.div`
   top: 0;
   background-color: #00000077;
   box-sizing: border-box;
-
   width: 100%;
   height: 100vh;
   z-index: 10;

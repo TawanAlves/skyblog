@@ -25,6 +25,8 @@ export const NavContent = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  max-width: 1085px;
+  margin: auto;
 `;
 
 export const LimiterLine = styled.div`

@@ -44,7 +44,8 @@ const postController = {
         avatar: files.base64Encode(upload.path + postToSend.avatar),
       };
     });
-    return res.json(postsToSend);
+    const newPostsToSend = postsToSend.reverse();
+    return res.json(newPostsToSend);
   },
 
   show: (req, res) => {

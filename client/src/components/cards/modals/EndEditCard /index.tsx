@@ -14,12 +14,12 @@ import {
   CloseTitle,
 } from "./styles";
 
-interface IProceedCard {
+interface IEndEditCard {
   show: boolean;
   setShow: (val: boolean) => void;
 }
 
-const ProceedCard: React.FC<IProceedCard> = ({ show, setShow }) => {
+const EndEditCard: React.FC<IEndEditCard> = ({ show, setShow }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,16 +44,27 @@ const ProceedCard: React.FC<IProceedCard> = ({ show, setShow }) => {
 
   return show ? (
     <Container>
-      <ContainerCloseModal onClick={handleClose} />
+      <ContainerCloseModal
+        onClick={() => {
+          handleClose();
+          navigate("/");
+        }}
+      />
       <Content>
         <HeaderContent>
-          <Title>Postagem Criada</Title>
-          <CloseTitle onClick={handleClose} style={{ cursor: "pointer" }}>
+          <Title>Postagem Editada</Title>
+          <CloseTitle
+            onClick={() => {
+              handleClose();
+              navigate("/");
+            }}
+            style={{ cursor: "pointer" }}
+          >
             x
           </CloseTitle>
         </HeaderContent>
         <Line />
-        <Message>Obrigado por compartilhar a sua história!</Message>
+        <Message>Obrigado por atualizar sua postagem!</Message>
         <BottomContent>
           <Title></Title>
           <Button
@@ -62,7 +73,7 @@ const ProceedCard: React.FC<IProceedCard> = ({ show, setShow }) => {
               navigate("/");
             }}
           >
-            Ver Postagem
+            Continuar
           </Button>
         </BottomContent>
       </Content>
@@ -70,4 +81,4 @@ const ProceedCard: React.FC<IProceedCard> = ({ show, setShow }) => {
   ) : null;
 };
 
-export default ProceedCard;
+export default EndEditCard;

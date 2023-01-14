@@ -6,6 +6,12 @@ describe("Postage", () => {
     const res = await request(server).get("/post");
     expect(res.statusCode).toEqual(200);
   });
+  it("List a posts", async () => {
+    const res = await request(server).get(
+      "/post/661728b0-92f5-11ed-ae5e-ef9f7d26733a"
+    );
+    expect(res.statusCode).toEqual(200);
+  });
   it("Delete post - 661728b0-92f5-11ed-ae5e-ef9f7d26733a", async () => {
     const res = await request(server).delete(
       "/post/delete/661728b0-92f5-11ed-ae5e-ef9f7d26733a"
@@ -14,47 +20,26 @@ describe("Postage", () => {
     expect(res.body.message).toEqual("post deletado");
   });
 
-  //   it("should get with id route", async () => {
-  //     const res = await request(server).get(
-  //       "/661728b0-92f5-11ed-ae5e-ef9f7d26733a"
-  //     );
-  //     console.log(res);
+  it("New post", async () => {
+    const res = await request(server).post("/post/newpost").send({
+      date: "2023-12-15T02:54:58.188Z",
+      nome: "Joaquim",
+      email: "joaqui23@email.com",
+      titulo: "Titulo da postagem do Joaquim ",
+      mensagem:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
+      avatar: "1.jpg",
+    });
+    expect(res.statusCode).toEqual(200);
+  });
 
-  //     expect(res.statusCode).toEqual(200);
-  //     expect(res.body).toHave({
-  //       id: "661728b0-92f5-11ed-ae5e-ef9f7d26733a",
-  //       date: "2023-07-28T02:54:58.188Z",
-  //       nome: "Roberto",
-  //       email: "robertinho123@email.com",
-  //       titulo: "Titulo da postagem",
-  //       mensagem:
-  //         "Viajar é preciso.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-  //       avatar: "jat.jpg",
-  //       // A imagem deve vir no formato complet, mudar isso
-  //     });
-  //   });
-
-  //   it("should get main route", async () => {
-  //     const res = await request(server).post("/post/newpost").send({
-  //       date: "2023-07-28T02:54:58.188Z",
-  //       nome: "João",
-  //       email: "joao@email.com",
-  //       titulo: "Titulo da postagem do joão",
-  //       mensagem:
-  //         "Viajar é preciso.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora esse natus quibusdam neque illum? Cumque necessitatibus facilis eum. Facere amet, animi aut sequi nostrum atque? Impedit laudantium ab ipsum velit.",
-  //       avatar: "jat.jpg",
-  //     });
-  //     // console.log(res);
-
-  //     expect(res.statusCode).toEqual(200);
-  //   });
-
-  //   it("should get main route", async () => {
-  //     const res = await request(server)
-  //       .put("/post/update/661728b0-92f5-11ed-ae5e-ef9f7d26733a")
-  //       .send({});
-  //     console.log(res);
-
-  //     expect(res.statusCode).toEqual(200);
-  //   });
+  it("update - 4cf57170-92f5-11ed-ae5e-ef9f7d26733a", async () => {
+    const res = await request(server)
+      .put("/post/update/4cf57170-92f5-11ed-ae5e-ef9f7d26733a")
+      .send({
+        nome: "Novo Jose",
+        email: "123jose@email.com",
+      });
+    expect(res.statusCode).toEqual(200);
+  });
 });

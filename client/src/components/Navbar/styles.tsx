@@ -33,13 +33,18 @@ export const GlassContainer = styled.div`
 `;
 export const PagTitle = styled.h1`
   text-decoration: none;
+  text-shadow: 5px 4px 9px #0000006c;
+  color: #fffafa;
+  font-family: "Courgette", cursive;
   font-weight: 400;
   font-size: 35px;
-  color: #fffafa;
-  text-shadow: 5px 4px 9px #0000006c;
-  font-family: "Courgette", cursive;
+  padding: 20px;
   @media (min-width: 576px) {
     font-size: 110px;
+    padding: 48px;
+  }
+  @media (min-width: 768px) {
+    padding: 56px;
   }
 `;
 

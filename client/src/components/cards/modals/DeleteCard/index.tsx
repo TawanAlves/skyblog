@@ -1,9 +1,84 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-// import { Container } from './styles';
+import {
+  Container,
+  Content,
+  ContainerCloseModal,
+  HeaderContent,
+  Title,
+  Line,
+  Message,
+  Button,
+  BottomContent,
+  CloseTitle,
+} from "./styles";
 
-const DeleteCard: React.FC = () => {
-  return <div />;
+interface IDeleteCard {
+  show: boolean;
+  setShow: (val: boolean) => void;
+}
+
+const DeleteCard: React.FC<IDeleteCard> = ({ show, setShow }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const body = document.getElementsByTagName("body");
+    if (body) {
+      if (show) {
+        window.scrollTo(0, 0);
+        body[0].style.overflow = "hidden";
+      } else {
+        body[0].style.overflow = "auto";
+      }
+    }
+  }, [show]);
+
+  const handleClose = () => {
+    const body = document.getElementsByTagName("body");
+    if (body) {
+      body[0].style.overflow = "auto";
+    }
+    setShow(false);
+  };
+
+  return show ? (
+    <Container>
+      <ContainerCloseModal
+        onClick={() => {
+          handleClose();
+          navigate("/");
+        }}
+      />
+      <Content>
+        <HeaderContent>
+          <Title>Postagem Deletada</Title>
+          <CloseTitle
+            onClick={() => {
+              handleClose();
+              navigate("/");
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            x
+          </CloseTitle>
+        </HeaderContent>
+        <Line />
+        <Message>Se quiser compartilhe-nos outra!</Message>
+        <BottomContent>
+          <Title></Title>
+          <Button
+            onClick={() => {
+              handleClose();
+              navigate("/");
+            }}
+          >
+            Continuar
+          </Button>
+        </BottomContent>
+      </Content>
+    </Container>
+  ) : null;
 };
 
 export default DeleteCard;

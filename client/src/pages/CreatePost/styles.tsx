@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-top: 80px;
+`;
 
 export const PagTitle = styled.h1`
-  margin: 80px 0 20px;
+  /* margin: 80px 0 20px; */
   text-align: center;
   color: #222420;
   font-size: 26px;
@@ -12,6 +14,7 @@ export const PagTitle = styled.h1`
   }
 `;
 export const Form = styled.form`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,7 +69,7 @@ export const EmailInput = styled.input.attrs({ type: "email" })`
 
 export const MessageInput = styled.textarea`
   width: 225px;
-  height: auto;
+  height: 25px;
   margin-top: 30px;
   outline: none;
   border: none;

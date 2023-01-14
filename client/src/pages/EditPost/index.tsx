@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import blogService from "../../services/blogService";
 import { useParams, useNavigate } from "react-router-dom";
 
 //css
 import { Container, Form, Image, ImageInput, TitleInput } from "./styles";
-
-//assets
-import Foto from "../../assets/img/airplane.jpg";
 import {
   Button,
   EmailInput,
@@ -15,24 +11,32 @@ import {
   TextInput,
 } from "../CreatePost/styles";
 
+//
+import blogService from "../../services/blogService";
+import EndEditCard from "../../components/cards/modals/EndEditCard ";
+import LoadingEffect from "../../components/LoadingEffect";
+
 const EditPost: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [blogPost, setBlogPost] = useState<any>([]);
-
-  const [title, setTitle] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [title, setTitle] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [image, setImage] = useState<File>();
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState<boolean>(true);
 
+  const navigate = useNavigate();
   let { postId } = useParams();
 
   useEffect(() => {
     const handleApi = async () => {
       try {
+        setLoading(true);
         const response = await blogService.getPostId(`${postId}`);
         const data = response;
         setBlogPost(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +48,7 @@ const EditPost: React.FC = () => {
   const handleUpdatePost = async (e: any) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const objectNewPost = {
         date: new Date(),
         nome: name,
@@ -56,56 +61,61 @@ const EditPost: React.FC = () => {
         `${postId}`,
         objectNewPost
       );
-      // console.log(response.data);
-      console.log(objectNewPost);
+      setShowModal(true);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
-    navigate("/");
   };
 
   return (
     <Container>
-      <PagTitle>Editar Postagem:</PagTitle>
-      <Form encType="multipart/form-data" onSubmit={handleUpdatePost}>
-        {/* Nome: */}
-        <TextInput
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          placeholder={blogPost.nome}
-        />
+      {loading ? (
+        <LoadingEffect />
+      ) : blogPost.length === 0 ? (
+        <h1>Nenhuma postagem encontrada</h1>
+      ) : (
+        <>
+          <EndEditCard {...{ show: showModal, setShow: setShowModal }} />
+          <PagTitle>Editar Postagem:</PagTitle>
+          <Form encType="multipart/form-data" onSubmit={handleUpdatePost}>
+            <TextInput
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              placeholder={blogPost.nome}
+            />
 
-        {/* Email: */}
-        <EmailInput
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          placeholder={blogPost.email}
-        />
+            <EmailInput
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder={blogPost.email}
+            />
 
-        {/* Titulo da Postagem: */}
-        <TextInput
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          placeholder={blogPost.titulo}
-        />
+            <TextInput
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder={blogPost.titulo}
+            />
 
-        {/* Escreva sua Mensagem */}
-        <MessageInput
-          onChange={(e: any) => setMessage(e.target.value)}
-          value={message}
-          placeholder={blogPost.mensagem}
-        />
-        <TitleInput>
-          {/* //! Não editar imagem */}
-          Imagem:
-          <Image src={blogPost.avatar} alt={"foto"} />
-          <ImageInput
-            name="image"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-        </TitleInput>
-        <Button type="submit">Editar Postagem</Button>
-      </Form>
+            <MessageInput
+              onChange={(e: any) => setMessage(e.target.value)}
+              value={message}
+              placeholder={blogPost.mensagem}
+            />
+            <TitleInput>
+              Imagem:
+              <Image src={blogPost.avatar} alt={"foto"} />
+              <ImageInput
+                name="image"
+                onChange={(e) =>
+                  setImage((e.target.files && e.target.files[0]) || undefined)
+                }
+              />
+            </TitleInput>
+            <Button type="submit">Editar Postagem</Button>
+          </Form>
+        </>
+      )}
     </Container>
   );
 };

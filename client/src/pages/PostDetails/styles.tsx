@@ -8,10 +8,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 80px;
 `;
 
 export const PagTitle = styled.h1`
-  margin: 80px 0 70px;
+  /* margin: 80px 0 70px; */
   text-align: center;
   color: #222420;
   font-size: 26px;
@@ -21,6 +22,7 @@ export const PagTitle = styled.h1`
 `;
 
 export const Content = styled.div`
+  margin-top: 70px;
   display: flex;
   gap: 0 50px;
   flex-direction: column;
@@ -90,6 +92,7 @@ export const Title = styled.h2`
   font-family: "Rubik", sans-serif;
   font-weight: 600;
   font-size: 26px;
+  padding: 33px 0;
   @media (min-width: 1200px) {
     text-align: left;
     font-size: 28px;
@@ -120,6 +123,7 @@ export const AuthorEmail = styled.p`
 
 export const Description = styled.p`
   max-width: 100vw;
+  padding: 25px 0;
   color: #222420;
   /* font-family: "Open Sans", sans-serif; */
   font-size: 20px;

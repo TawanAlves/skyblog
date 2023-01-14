@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-
-import blogService from "../../services/blogService";
+import { useParams } from "react-router-dom";
 
 //css
 import {
@@ -24,22 +22,28 @@ import {
   Trash,
 } from "./styles";
 
-//assets
-import Foto from "../../assets/img/airplane.jpg";
+//
+import blogService from "../../services/blogService";
+import DeleteCard from "../../components/cards/modals/DeleteCard";
+import LoadingEffect from "../../components/LoadingEffect";
 
 const PostDetails: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [blogPost, setBlogPost] = useState<any>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
   // Todo: mudar tipo do state
 
   let { postId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleApi = async () => {
       try {
+        setLoading(true);
         const response = await blogService.getPostId(`${postId}`);
         const data = response;
         setBlogPost(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -49,64 +53,48 @@ const PostDetails: React.FC = () => {
 
   const handleDelete = async () => {
     try {
+      setLoading(true);
       const response = await blogService.deletPost(`${postId}`);
+      setShowModal(true);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
-    navigate("/");
   };
 
   return (
     <Container>
-      <PagTitle>Detalhes do Post</PagTitle>
-      <Content>
-        <LeftContent>
-          <Image src={blogPost.avatar} alt={blogPost.avatar} />
-        </LeftContent>
-        <RightContent>
-          <DateContainer>
-            <Day>{blogPost.dia}</Day>
-            <Month>{blogPost.mes}</Month>
-          </DateContainer>
-          <Title>{blogPost.titulo}</Title>
-          <AuthorEmail>{blogPost.email}</AuthorEmail>
-          <AuthorName> {blogPost.nome}</AuthorName>
-          <Description>{blogPost.mensagem}</Description>
-          <EditContainer>
-            <EditPost to={`/edit-post/${`${postId}`}`}>
-              <Pencil />
-            </EditPost>
-            <Trash onClick={handleDelete} />
-          </EditContainer>
-        </RightContent>
-      </Content>
-
-      {/* <Content>
-        <LeftContent>
-          <Image src={Foto} alt={"photo"} />
-        </LeftContent>
-        <RightContent>
-          <DateContainer>
-            <Day>27</Day>
-            <Month>JUL</Month>
-          </DateContainer>
-          <Title>Titulo da Postagem</Title>
-          <AuthorEmail>Jubileu</AuthorEmail>
-          <AuthorName>authorname@gmail.com</AuthorName>
-          <Description>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis qui
-            ipsam voluptas cupiditate sed, sint odio repellat facilis nulla
-            eaque doloremque aperiam perspiciatis autem eveniet sequi vitae id
-            pariatur ipsum.
-          </Description>
-          <EditContainer>
-            <EditPost to={`/edit-post/${"post1"}`}>
-              <Pencil />
-            </EditPost>
-            <Trash />
-          </EditContainer>
-        </RightContent>
-      </Content> */}
+      {loading ? (
+        <LoadingEffect />
+      ) : blogPost.length === 0 ? (
+        <h1>Nenhuma postagem encontrada</h1>
+      ) : (
+        <>
+          <DeleteCard {...{ show: showModal, setShow: setShowModal }} />
+          <PagTitle>Detalhes do Post</PagTitle>
+          <Content>
+            <LeftContent>
+              <Image src={blogPost.avatar} alt={blogPost.avatar} />
+            </LeftContent>
+            <RightContent>
+              <DateContainer>
+                <Day>{blogPost.dia}</Day>
+                <Month>{blogPost.mes}</Month>
+              </DateContainer>
+              <Title>{blogPost.titulo}</Title>
+              <AuthorEmail>{blogPost.email}</AuthorEmail>
+              <AuthorName> {blogPost.nome}</AuthorName>
+              <Description>{blogPost.mensagem}</Description>
+              <EditContainer>
+                <EditPost to={`/edit-post/${`${postId}`}`}>
+                  <Pencil />
+                </EditPost>
+                <Trash onClick={handleDelete} />
+              </EditContainer>
+            </RightContent>
+          </Content>
+        </>
+      )}
     </Container>
   );
 };
