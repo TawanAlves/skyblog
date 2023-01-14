@@ -80,6 +80,11 @@ const EditPost: React.FC = () => {
           <PagTitle>Editar Postagem:</PagTitle>
           <Form encType="multipart/form-data" onSubmit={handleUpdatePost}>
             <TextInput
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+              placeholder={blogPost.titulo}
+            />
+            <TextInput
               onChange={(e) => setName(e.target.value)}
               value={name}
               placeholder={blogPost.nome}
@@ -89,12 +94,6 @@ const EditPost: React.FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               placeholder={blogPost.email}
-            />
-
-            <TextInput
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-              placeholder={blogPost.titulo}
             />
 
             <MessageInput

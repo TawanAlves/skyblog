@@ -63,6 +63,12 @@ const CreatePost: React.FC = () => {
       <Form encType="multipart/form-data" onSubmit={handleNewPost}>
         <TextInput
           required
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          placeholder={"Titulo da Postagem:"}
+        />
+        <TextInput
+          required
           onChange={(e) => setName(e.target.value)}
           value={name}
           placeholder={"Nome:"}
@@ -73,13 +79,6 @@ const CreatePost: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder={"Email:"}
           value={email}
-        />
-
-        <TextInput
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          placeholder={"Titulo da Postagem:"}
         />
 
         <MessageInput
@@ -93,6 +92,7 @@ const CreatePost: React.FC = () => {
           Imagem:
           <ImageInput
             name="image"
+            required
             onChange={(e) =>
               setImage((e.target.files && e.target.files[0]) || undefined)
             }
