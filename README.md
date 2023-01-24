@@ -1,6 +1,6 @@
 # skyblog
 
-## Created using React,TS and Node
+## Created using React,TypeScript and NodeJs
 
 ## Setup
 
